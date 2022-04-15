@@ -41,5 +41,6 @@ document.getElementById('required').addEventListener('submit', function(e) {
 
 document.getElementById('cancel').addEventListener('click', function() {
     document.querySelector('.add').classList.add('none');
-    document.querySelector('.banks').classList.remove('none'); 
+    document.querySelector('.banks').classList.remove('none');
+    availableBanks.value = "choose";
 })
