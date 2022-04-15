@@ -1,5 +1,6 @@
 # Elif-loan-calc
 Loan calculator test task made by Dima Reshetnikov
+https://dimanet86.github.io/Elif-loan-calc/
 
 ## Overview
 
@@ -15,3 +16,6 @@ After pressing "Add new bank" button user is offered to fill out a form and eith
 Submitting new bank sets newly created bank as a chosen bank in drop-down menu and immediately allows compute monthly payment with a data of this bank.  
 
 ![image](https://user-images.githubusercontent.com/53656936/163623929-7ddd8cfd-a546-409a-b734-aca3e849b37f.png)
+
+### Deployed application can be found here: 
+https://dimanet86.github.io/Elif-loan-calc/
