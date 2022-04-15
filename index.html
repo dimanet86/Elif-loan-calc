@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Loan calculator</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <header>Loan calculator</header>
+    <div class="main">
+        <div class="calculation">
+            <select name="Available banks" id="availableBanks">
+                <option value="choose"> Choose your bank </option>
+                <option value="add">Add new bank</option>
+            </select>
+            <div class="input">
+                <label for="initial"> Initial loan </label>
+                <input type="text" id="initialField" placeholder="0" readonly>
+                <input type="range" id="initial" min="0" max="" step="1" value="0">
+            </div>
+            <div class="input">
+                <label for="downpayment"> Downpayment </label>
+                <input type="text" id="downpaymentField" placeholder="0" readonly>
+                <input type="range" id="downpayment" min="" max="" step="1" value="0">
+            </div>
+            <div class="input">
+                <label for="months"> Number of months </label>
+                <input type="text" id="monthsField" placeholder="1" readonly>
+                <input type="range" id="months" min="1" max="" step="1" value="1">
+            </div>
+            <div id="result">
+                <h2> Monthly payment</h2>
+                <h3>Please choose the bank from dropdown above</h3>
+            </div>    
+        </div>
+        <div class="banks">
+            <div><h2>Available banks</h2>
+            <ol>
+            </ol>
+            </div>
+            <div class="addclearbtns">
+                <button id="addList"> Add new bank </button>
+                <button id="clear"> Clear list</button>
+            </div>
+        </div>
+        <div class="add none">
+            <h2>Fill out the form to add new bank</h2>
+            <form id="required">
+                <div class="addblock">
+                    <div class="inputgroup">
+                        <label for="bankName">Bank name</label>
+                        <input type="text" id="bankName" name="bank name" placeholder="e.g. PUMB" required>
+                    </div>
+                    <div class="inputgroup">
+                        <label for="interest">Interest rate in %</label>
+                        <input type="text" id="interest" name="interest rate" placeholder="e.g. 10" required>
+                    </div>
+                    <div class="inputgroup">
+                        <label for="maxloan">Maximum loan in $</label>
+                        <input type="text" id="maxloan" name="max loan" placeholder="e.g. 10000" required>
+                    </div>
+                    <div class="inputgroup">
+                        <label for="mindownpayment">Minimum down payment in $</label>
+                        <input type="text" id="mindownpayment" name="min down payment" placeholder="e.g. 2000" required>
+                    </div>
+                    <div class="inputgroup">
+                        <label for="term">Loan term (# of months)</label>
+                        <input type="text" id="term" name="loan term" placeholder="e.g. 12" required>
+                    </div>
+                    <div class="inputbuttons">
+                        <button type="submit" id="add" form="required">Submit</button>
+                        <button type="reset" form="required"> Reset </button>
+                        <button type="button" id="cancel">Cancel</button>
+                    </div>                
+                </div>
+            </form>
+        </div>
+    </div>
+
+        <script src="calculator.js"></script>
+        <script src="banks.js"></script>
+        <script>
+            window.addEventListener('load', dropdown);
+            function dropdown() {
+                // Showing available banks and their data
+                for (let i of Object.keys(localStorage)) {
+                    let option = document.createElement('option');
+                    option.value = option.textContent = i;
+                    availableBanks.add(option, availableBanks.length - 1);
+                    let li = document.createElement('li');
+                    li.textContent = `${i} Rate: ${JSON.parse(localStorage.getItem(i)).rate} Max loan: ${JSON.parse(localStorage.getItem(i)).maxloan} Min downpayment: ${JSON.parse(localStorage.getItem(i)).downpayment} Term: ${JSON.parse(localStorage.getItem(i)).term}`;
+                    document.querySelector('.banks ol').append(li);
+                }
+                if (availableBanks.value =='choose') {
+                    initialSlider.disabled = true;
+                    documentdownpaymentSlider.disabled = true;
+                    monthsSlider.disabled = true;
+                }
+            }
+        </script>    
+</body>
+
+</html>
