@@ -1,4 +1,4 @@
-# Elif-loan-calc
+# Loan calculator
 Loan calculator test task made by Dima Reshetnikov
 https://dimanet86.github.io/Loan-calc-test-task/
 
